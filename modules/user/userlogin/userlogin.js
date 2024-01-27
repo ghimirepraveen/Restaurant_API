@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { findOne, validate } = require("../../model/userlogin.model");
+const { findOne, validate } = require("../../../model/userlogin.model");
 
 const userlogin = async (req, res) => {
   Users = mongoose.model("users");

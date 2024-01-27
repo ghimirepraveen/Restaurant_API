@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const user_Route = require("./modules/user.routes");
+const user_Route = require("./modules/user/user.routes");
+const food_Route = require("./modules/food/food.routes");
 dotenv.config();
 
 const app = express();
@@ -16,6 +17,7 @@ mongoose
     console.log("Cannot connect to Database");
   });
 app.use("/users", user_Route);
+app.use("/food", food_Route);
 app.listen(process.env.port, () => {
   console.log(`listening to port ${process.env.port}`);
 });
