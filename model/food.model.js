@@ -1,11 +1,11 @@
-const mongooes = require("mongoose");
+const mongoose = require("mongoose");
 
-const foodSchema = new mongooes.Schema({
+const foodSchema = new mongoose.Schema({
   fname: {
     type: String,
     required: [true, " food name is required"],
   },
-  Price: {
+  price: {
     type: String,
     required: [true, " price is required"],
   },

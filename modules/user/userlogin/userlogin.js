@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const { findOne, validate } = require("../../../model/userlogin.model");
-
+const jwt = require("jsonwebtoken");
 const userlogin = async (req, res) => {
   Users = mongoose.model("users");
   const { email, password } = req.body;
@@ -21,8 +20,23 @@ const userlogin = async (req, res) => {
     });
     return;
   }
+
+  const getUserforJWT = await Users.findOne({
+    email: email,
+  });
+
+  const accesToken = jwt.sign(
+    {
+      email: getUserforJWT.email,
+      name: getUserforJWT.name,
+    },
+    process.env.JWT_salt
+    //{ expiresIn: "90 days" }
+  );
+
   res.status(200).json({
     status: "user logged in successfully ",
+    accesToken,
   });
 };
 module.exports = userlogin;

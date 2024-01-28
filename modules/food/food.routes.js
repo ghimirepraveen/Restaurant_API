@@ -1,9 +1,8 @@
 const express = require("express");
 const food_Router = express.Router();
-const userlogin = require("./userlogin/userlogin");
-const regesteration = require("./userregisteration/registeration");
-
-user_Router.get("/menu", userlogin);
-user_Router.post("/addfood", regesteration);
+const getFood = require("./getfood/getfood");
+const postFood = require("./postfood/postfood");
+food_Router.get("/menu", getFood);
+food_Router.post("/addfood", postFood);
 
 module.exports = food_Router;
