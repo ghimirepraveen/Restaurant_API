@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const userlogin = async (req, res) => {
   Users = mongoose.model("users");
   const { email, password } = req.body;
+  console.log(req.body);
 
   try {
     if (!email) throw "provide email";
@@ -10,13 +12,15 @@ const userlogin = async (req, res) => {
     const getUser = await Users.findOne({
       email: email,
     });
+
     if (!getUser) throw "User doesnot exist";
 
-    if (!(password, getUser.password))
+    if (!(password === getUser.password))
       throw "email and password does not match";
   } catch (e) {
     res.status(400).json({
-      status: e.message,
+      status: "failed",
+      message: e,
     });
     return;
   }
