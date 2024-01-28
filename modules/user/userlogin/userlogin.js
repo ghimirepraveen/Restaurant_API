@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const userlogin = async (req, res) => {
   Users = mongoose.model("users");
   const { email, password } = req.body;
-  console.log(req.body);
+  //console.log(req.body);
 
   try {
     if (!email) throw "provide email";
