@@ -11,5 +11,4 @@ food_Router.use(auth);
 food_Router.post("/addfood", postFood);
 food_Router.put("/updatefood", updatefood);
 food_Router.delete("/deletefood", deletefood);
-
 module.exports = food_Router;

@@ -6,7 +6,7 @@ const deletefood = async (req, res) => {
     if (!fname) throw "Provide Food Name";
     const find = await Food.findOne({ fname: fname });
     if (!find) throw "Provide correct food name  ";
-    const deletefood = await Food.deleteMany({ fname: fname });
+    const deletefood = await Food.deleteOne({ fname: fname });
   } catch (e) {
     res.status(400).json({
       status: "failed ",
@@ -15,7 +15,7 @@ const deletefood = async (req, res) => {
     return;
   }
   res.status(200).json({
-    status: "sucess",
+    status: "success",
     message: "sucessfully deleted the food",
   });
 };

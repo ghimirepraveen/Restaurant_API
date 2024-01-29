@@ -8,7 +8,7 @@ const updatefood = async (req, res) => {
     if (!fname) throw "Provide Food Name";
     const find = await Food.findOne({ fname: fname });
     if (!find) throw "Provide correct food name";
-    const update = await Food.updateMany(
+    const update = await Food.updateOne(
       { fname: fname },
       {
         $set: {
@@ -26,7 +26,7 @@ const updatefood = async (req, res) => {
     return;
   }
   res.status(200).json({
-    status: "sucess",
+    status: "success",
     message: "sucessfully updated the food",
   });
 };
