@@ -3,11 +3,13 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const user_Route = require("./modules/user/user.routes");
 const food_Route = require("./modules/food/food.routes");
+const order_Route = require("./modules/order/order.routes");
 dotenv.config();
 
 const app = express();
 require("./model/food.model");
 require("./model/userlogin.model");
+require("./model/order.model");
 app.use(express.json());
 require("./model/userlogin.model");
 //console.log(process.env.DB);
@@ -21,6 +23,7 @@ mongoose
   });
 app.use("/users", user_Route);
 app.use("/food", food_Route);
+app.use("/order", order_Route);
 app.listen(process.env.port, () => {
   console.log(`listening to port ${process.env.port}`);
 });

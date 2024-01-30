@@ -12,12 +12,22 @@ const foodSchema = new mongoose.Schema({
   },
   ingredient: {
     type: String,
-    required: [true, " ingredient is required"],
+    //required: [true, " ingredient is required"],
   },
   rating: {
     type: Number,
     min: [0, "value shouls be more than 0"],
     max: [10, "value should be less than 10 "],
+  },
+
+  quantity: {
+    type: Number,
+    min: [0, "value shouls be more than 0"],
+    max: [10, "value should be less than 10 "],
+    // required: [true, " quantity  is required"],
+  },
+  additional_instruction: {
+    type: String,
   },
 });
 const foodModel = mongoose.model("food", foodSchema);

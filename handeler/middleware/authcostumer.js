@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const auth = (req, res, next) => {
+const authcostumer = (req, res, next) => {
   //auth logic
   const authorizationHeader = req.headers.authorization;
   //console.log(req.header);
@@ -13,9 +13,9 @@ const auth = (req, res, next) => {
   const token = authorizationHeader.split("Bearer ")[1];
 
   try {
-    const checktoken = jwt.verify(token, process.env.JWT_salt);
+    const checktoken = jwt.verify(token, process.env.JWT_salt_forcostumer);
     req.user = checktoken;
-    //console.log(req.user);
+    console.log(req.user);
   } catch (e) {
     res.status(401).json({
       status: "failed",
@@ -27,4 +27,4 @@ const auth = (req, res, next) => {
   next();
 };
 
-module.exports = auth;
+module.exports = authcostumer;

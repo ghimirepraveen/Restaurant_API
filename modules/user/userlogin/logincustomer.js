@@ -34,7 +34,7 @@ const userlogin = async (req, res) => {
       email: getUserforJWT.email,
       name: getUserforJWT.name,
     },
-    process.env.JWT_salt
+    process.env.JWT_salt_forcostumer
     //{ expiresIn: "90 days" }
   );
 
